@@ -1,64 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quest Presets</title>
-    <!-- Google AdSense script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9485117586406230" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphene Nodes - Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #0e0e0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      animation: fadeInMove 1s ease forwards;
+      margin-top: 80px; /* to make space for logo */
+    }
+
+    h1 span {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-top: 10px;
+    }
+
+    .subtitle-highlight {
+      font-weight: bold;
+      font-size: 1.75rem;
+      color: #fff;
+      display: block;
+      margin-top: 6px;
+    }
+
+    .countdown {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      font-size: 4.5rem;
+      font-weight: bold;
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      animation: fadeInMove 1s ease forwards;
+      animation-delay: 0.5s;
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      border-radius: 12px;
+      padding: 16px 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      letter-spacing: 2px;
+    }
+    .logo {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      opacity: 0;
+      animation: logoFadeIn 1.2s ease forwards;
+      animation-delay: 0.2s;
+      z-index: 10;
+      background: none;
+    }
+
+    @keyframes logoFadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+
+
+    .socials {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.25rem;
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      animation: fadeInMove 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .socials a {
+      color: #1da1f2;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    @keyframes fadeInMove {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Quest Presets</h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#store">Store</a>
-                <a href="#about">About</a>
-            </nav>
-        </div>
-    </header>
+  <img src="logo.png" class="logo" alt="Graphene Nodes Logo">
+  <h1>
+    Graphene Nodes
+    <span style="color:#777777; font-size:1.05rem;">
+      Graphene Nodes – Next-Gen Minecraft Hosting
+      <br>
+      <span class="subtitle-highlight">Reliable. Free. Built for Gamers.</span>
+    </span>
+  </h1>
 
-    <!-- Top AdSense Banner -->
-    <section class="ad-slot top-ad">
-        <ins class="adsbygoogle"
-             style="display:block; text-align:center;"
-             data-ad-client="ca-pub-9485117586406230"
-             data-ad-slot="1229529950"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        
-    </section>
+  <div class="countdown" id="countdown">00 : 00 : 00 : 00</div>
 
-    <main class="container">
-        <section id="store">
-            <h2>Available Presets & Templates</h2>
-            <div id="product-grid" class="grid"></div>
-        </section>
-    </main>
+  <div class="socials">
+    socials: <a href="#">Discord</a> / <a href="#">YouTube</a>
+  </div>
 
-    <!-- Bottom AdSense Banner -->
-    <section class="ad-slot bottom-ad">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
-             data-ad-client="ca-pub-9485117586406230"
-             data-ad-slot="1229529950"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </section>
+  <script>
+    // Countdown Timer
+    const countdown = document.getElementById('countdown');
+    // Set fixed target date/time
+    const targetDate = new Date("2025-08-25T18:00:00").getTime();
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Quest Presets</p>
-        </div>
-    </footer>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9485117586406230"
-     crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = 
+        (days < 10 ? "0" + days : days) + " : " +
+        (hours < 10 ? "0" + hours : hours) + " : " +
+        (minutes < 10 ? "0" + minutes : minutes) + " : " +
+        (seconds < 10 ? "0" + seconds : seconds);
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
